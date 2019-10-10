@@ -33,35 +33,35 @@ export default function MenuView({
 
   const { path, name } = find(menudata, pathname);
 
-  useEffect(() => {
-    if (name) {
-      const index = name.indexOf(' - ');
-      if (index > -1) {
-        document.title = `律优联盟${name.substr(index)}`;
-      } else {
-        document.title = `律优联盟 - ${name}`;
-      }
-    } else {
-      document.title = `律优联盟`;
-    }
-  }, [name]);
+  // useEffect(() => {
+  //   if (name) {
+  //     const index = name.indexOf(' - ');
+  //     if (index > -1) {
+  //       document.title = `律优联盟${name.substr(index)}`;
+  //     } else {
+  //       document.title = `律优联盟 - ${name}`;
+  //     }
+  //   } else {
+  //     document.title = `律优联盟`;
+  //   }
+  // }, [name]);
 
   const defaultOpenKeys = menudata.map(({ name }) => name);
 
   return (
-    <Layout.Sider
-      width={200}
-      theme="light"
-      style={{ backgroundColor: 'white' }}>
-      <Menu
-        key={defaultOpenKeys.join('-')}
-        style={{ height: '100%', borderRight: 0 }}
-        defaultOpenKeys={defaultOpenKeys}
-        selectedKeys={path ? [path] : []}
-        mode="inline">
-        {render(menudata, history)}
-      </Menu>
-    </Layout.Sider>
+    // <Layout.Sider
+    //   // width={200}
+    //   theme="light"
+    //   style={{ backgroundColor: 'white' }}>
+    <Menu
+      key={defaultOpenKeys.join('-')}
+      style={{ height: '100%', borderRight: 0 }}
+      defaultOpenKeys={defaultOpenKeys}
+      selectedKeys={path ? [path] : []}
+      mode="inline">
+      {render(menudata, history)}
+    </Menu>
+    // </Layout.Sider>
   );
 }
 

@@ -12,6 +12,9 @@ import Context, { ContextState, Userflag } from '_base/Context';
 import Init from './x000/Init';
 import Sign from './x000/Sign';
 import Head from './x000/Head';
+import Demo from './x000/Demo';
+import Menu from './x000/Menu';
+
 // #########################
 import {
   BrowserRouter as Router,
@@ -32,6 +35,9 @@ ReactDOM.render(
 );
 
 function renderRouter({ userflag, userName, popupView }: ContextState) {
+  console.log(Demo.pathOf({ page: '2' }));
+  console.log(Userflag, userflag);
+
   switch (userflag) {
     case Userflag.LOADING:
       return <Init />;
@@ -40,11 +46,25 @@ function renderRouter({ userflag, userName, popupView }: ContextState) {
     default:
       return (
         <Router>
-          <Layout>
-            <Route component={Head} />
+          <Layout style={{ height: '100%' }}>
             <Switch>
-              <Redirect exact from="/" to="/x000" />
+              <Route component={Menu} />
             </Switch>
+            <Layout>
+              <Switch>
+                <Route component={Head} />
+              </Switch>
+              <Layout.Content></Layout.Content>
+            </Layout>
+            {/* <Route component={Head} />
+            <Switch>
+              <Route path={Demo.path} component={Demo} />
+              <Redirect
+                // exact
+                // from="/"
+                to={Demo.pathOf({ page: 2 })}
+              />
+            </Switch> */}
           </Layout>
         </Router>
       );

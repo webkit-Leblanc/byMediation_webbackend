@@ -70,5 +70,6 @@
       "prettier --write",
       "git add"
     ]
-  }
+  },
+  "__npminstall_done": false
 }

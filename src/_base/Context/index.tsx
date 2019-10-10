@@ -8,11 +8,13 @@
 
 /** Happy Coding */
 import React, { createContext, PureComponent, ReactNode } from 'react';
+import { userContext } from '_fetch/auth';
 import fetch from './fetch';
 import { message } from 'antd';
 export enum Userflag {
   LOADING = -1,
   UNKNOWN = 0,
+  KONOWN = 1,
 }
 
 export interface Fetch {
@@ -28,7 +30,7 @@ interface Model extends Fetch {
 }
 const defaultContextModel: Model = {
   popupView: null,
-  userflag: 21,
+  userflag: -1,
   userName: '',
   username: '',
   avatar: '',
@@ -58,11 +60,14 @@ export default class Context extends PureComponent<Props, ContextState> {
     };
   }
   componentDidMount() {
-    fetch()
-      .then(data => {
-        this.setState(data);
+    // 此处做登录状态的判断
+    userContext()
+      .then(context => {
+        console.log('token is available', context);
+        this.setState({ userflag: Userflag.KONOWN });
       })
-      .catch(() => {
+      .catch(err => {
+        console.log(err);
         this.setState({ userflag: Userflag.UNKNOWN });
       });
   }

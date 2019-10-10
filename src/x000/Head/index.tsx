@@ -7,24 +7,36 @@
  */
 
 /** Happy Coding */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 
-import { Layout } from 'antd';
+import { Layout, Menu, Dropdown, Icon, Row, Col } from 'antd';
 import withPath from '_base/withPath';
 //import Component from '_view/Component';
+import { context } from '_base/Context';
+import { userLogout } from '_fetch/auth';
 
 import { getData } from './fetch';
+const { SubMenu } = Menu;
 
 export default withPath('/x000/head', {})(function Head({
   history,
   match: { params },
 }) {
   const loading = true;
+  const { setContextState } = useContext(context);
 
   useEffect(() => {
     document.title = 'Title';
   }, []);
+
+  function userLogoutFun() {
+    userLogout().then(a => {
+      setContextState({
+        userflag: 0,
+      });
+    });
+  }
 
   return (
     <Layout.Header
@@ -35,7 +47,15 @@ export default withPath('/x000/head', {})(function Head({
         padding: '0',
         backgroundColor: 'white',
       }}>
-      Header
+      <Row type="flex" align="middle" justify="end" style={{ width: '100%' }}>
+        <Col>
+          <span
+            style={{ padding: '0 20px', cursor: 'pointer' }}
+            onClick={userLogoutFun}>
+            退出
+          </span>
+        </Col>
+      </Row>
     </Layout.Header>
   );
 });

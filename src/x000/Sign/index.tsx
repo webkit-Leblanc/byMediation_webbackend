@@ -12,6 +12,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Form, Icon, Input, Button, Checkbox, message } from 'antd';
 import { FormComponentProps } from 'antd/lib/form';
 import { context } from '_base/Context';
+import { scheduelAuthUpdate } from '_fetch/auth';
 // import Component from '_view/Component';
 
 import { signin, forgetPword } from './fetch';
@@ -32,7 +33,11 @@ function Sign({
         setLogging(true);
         signin(values)
           .then(data => {
-            setContextState(data);
+            // console.log('data', data);
+            console.log(data);
+            setContextState({ userflag: 1 });
+            scheduelAuthUpdate(data.data.token);
+            // setContextState(data);
             setLogging(false);
           })
           .catch(err => {
@@ -93,7 +98,7 @@ function Sign({
               {
                 required: true,
                 message: '请输入密码（不少于 8 位）',
-                min: 8,
+                // min: 8,
               },
             ],
           })(

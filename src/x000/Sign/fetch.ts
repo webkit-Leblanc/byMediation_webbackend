@@ -6,7 +6,14 @@
 import fetch from '_fetch';
 
 export function signin(data) {
-  return fetch(`/x000/signin`, data);
+  // return fetch(`/x000/signin`, data);
+  var Data = {
+    code: 0,
+    message: '登录成功',
+    data: { username: '柯礼钦', token: '22222fjafsafhasfh' },
+  };
+  return Promise.resolve(Data);
+  // return
 }
 
 export function forgetPword({ username }) {
