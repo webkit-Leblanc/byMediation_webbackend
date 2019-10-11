@@ -33,18 +33,16 @@ export default function MenuView({
 
   const { path, name } = find(menudata, pathname);
 
-  // useEffect(() => {
-  //   if (name) {
-  //     const index = name.indexOf(' - ');
-  //     if (index > -1) {
-  //       document.title = `律优联盟${name.substr(index)}`;
-  //     } else {
-  //       document.title = `律优联盟 - ${name}`;
-  //     }
-  //   } else {
-  //     document.title = `律优联盟`;
-  //   }
-  // }, [name]);
+  if (name) {
+    const index = name.indexOf(' - ');
+    if (index > -1) {
+      document.title = `${name.substr(index)}`;
+    } else {
+      document.title = `${name}`;
+    }
+  } else {
+    document.title = `白云区多元化解平台`;
+  }
 
   const defaultOpenKeys = menudata.map(({ name }) => name);
 

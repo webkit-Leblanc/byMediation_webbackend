@@ -12,10 +12,8 @@ import { RouteComponentProps } from 'react-router-dom';
 
 import { Spin, Layout, Menu, Icon } from 'antd';
 import MenView from '_view/MenuView';
-import withPath from '_base/withPath';
 
 const { Sider } = Layout;
-const { SubMenu } = Menu;
 
 export default function MenuView({
   history,
@@ -23,7 +21,7 @@ export default function MenuView({
 }: RouteComponentProps) {
   const [collapsed, setcollapsed] = useState(false);
   useEffect(() => {
-    document.title = 'Title';
+    // document.title = '白云区多元化解平台';
   }, []);
 
   return (

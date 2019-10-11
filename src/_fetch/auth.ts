@@ -40,9 +40,7 @@ export default function authFetch(path: string, data?: any) {
 }
 
 export async function userContext() {
-  console.log('Authorization', Authorization);
   if (Authorization) {
-    console.log('执行下去');
     await updateAuth();
     return;
     //   return await fetchContext();

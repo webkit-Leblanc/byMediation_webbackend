@@ -14,9 +14,9 @@ import withPath from '_base/withPath';
 //import Component from '_view/Component';
 import { getData } from './fetch';
 
-export default withPath('/x000/demo', { page: '4' })(
+export default withPath('/agent-member/taskmanage', { page: '4' })(
   ({ history, match: { params } }) => {
-    const loading = true;
+    const loading = false;
 
     return (
       <Spin spinning={loading}>

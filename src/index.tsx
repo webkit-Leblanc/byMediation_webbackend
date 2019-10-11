@@ -35,9 +35,6 @@ ReactDOM.render(
 );
 
 function renderRouter({ userflag, userName, popupView }: ContextState) {
-  console.log(Demo.pathOf({ page: '2' }));
-  console.log(Userflag, userflag);
-
   switch (userflag) {
     case Userflag.LOADING:
       return <Init />;
@@ -54,7 +51,10 @@ function renderRouter({ userflag, userName, popupView }: ContextState) {
               <Switch>
                 <Route component={Head} />
               </Switch>
-              <Layout.Content></Layout.Content>
+              <Layout.Content>
+                <Route path={Demo.path} component={Demo} />
+                <Redirect exact from="/" to={Demo.pathOf({ page: 2 })} />
+              </Layout.Content>
             </Layout>
             {/* <Route component={Head} />
             <Switch>

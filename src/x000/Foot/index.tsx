@@ -22,9 +22,7 @@ export default withPath('/x000/foot', {})(function Foot({
 }) {
   const loading = true;
 
-  useEffect(() => {
-    document.title = 'Title';
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <Spin spinning={loading}>

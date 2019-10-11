@@ -63,7 +63,6 @@ export default class Context extends PureComponent<Props, ContextState> {
     // 此处做登录状态的判断
     userContext()
       .then(context => {
-        console.log('token is available', context);
         this.setState({ userflag: Userflag.KONOWN });
       })
       .catch(err => {

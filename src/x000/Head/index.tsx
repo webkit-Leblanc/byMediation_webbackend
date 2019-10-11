@@ -26,9 +26,7 @@ export default withPath('/x000/head', {})(function Head({
   const loading = true;
   const { setContextState } = useContext(context);
 
-  useEffect(() => {
-    document.title = 'Title';
-  }, []);
+  useEffect(() => {}, []);
 
   function userLogoutFun() {
     userLogout().then(a => {
